@@ -1,0 +1,27 @@
+<RCC>
+  <qresource prefix="pic">
+    <file>button_hui.png</file>
+    <file>底色橘黄.png</file>
+    <file>底色红色.png</file>
+    <file>button_7.png</file>
+    <file>button_enter.png</file>
+    <file>button_MON.png</file>
+    <file>button_call.png</file>
+    <file>button_reset.png</file>
+    <file>button_TX.png</file>
+    <file>button_usblsb.png</file>
+    <file>button_MOOD.png</file>
+    <file>button_up.png</file>
+    <file>button_down.png</file>
+    <file>button_dot.png</file>
+    <file>button_5.png</file>
+    <file>button_0.png</file>
+    <file>button_2.png</file>
+    <file>button_3.png</file>
+    <file>button_6.png</file>
+    <file>button_1.png</file>
+    <file>button_9.png</file>
+    <file>button_4.png</file>
+    <file>button_8.png</file>
+  </qresource>
+</RCC>
