@@ -14,7 +14,7 @@ class TextSuccessReceive(object):
     ENCODE_TYPE = "utf-8"
 
     def __init__(self):
-        self.usage = "text_received"
+        self.usage = "measure_recv"
 
     @staticmethod
     def format_():
@@ -41,9 +41,10 @@ class TextSuccessReceive(object):
     def send(self, __send, addr):
         __send.send_apply(self.pack_data, addr)
 
-
     def __str__(self):
         return self.usage
+
+
 if __name__ == '__main__':
     x = TextSuccessReceive()
     print(x)
