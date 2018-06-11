@@ -9,12 +9,12 @@ from mylogging import logger
 sys.path.append(os.path.abspath("../tool"))
 from typeProperty import typed_property
 class TextSuccessReceive(object):
-    __slots__ = ['_category']
-    category = typed_property("category", str)
+    __slots__ = ['_usage']
+    usage = typed_property("usage", str)
     ENCODE_TYPE = "utf-8"
 
     def __init__(self):
-        self.category = "text_received"
+        self.usage = "text_received"
 
     @staticmethod
     def format_():
@@ -23,7 +23,7 @@ class TextSuccessReceive(object):
     @property
     def all_data(self):
         return (
-            self.category,
+            self.usage,
         )
 
     @property
