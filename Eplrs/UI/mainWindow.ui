@@ -18,13 +18,13 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>10</y>
       <width>781</width>
       <height>391</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="MainWindow_tab">
      <attribute name="title">
@@ -166,9 +166,9 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="start_voice_button">
+        <widget class="QPushButton" name="send_position_button">
          <property name="text">
-          <string>话音交互</string>
+          <string>位置报告</string>
          </property>
         </widget>
        </item>
@@ -186,9 +186,9 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="send_file_button">
+        <widget class="QPushButton" name="send_measure_button">
          <property name="text">
-          <string>数据交互</string>
+          <string>测量报告</string>
          </property>
         </widget>
        </item>
@@ -242,15 +242,94 @@
        <bool>false</bool>
       </attribute>
       <attribute name="verticalHeaderVisible">
-       <bool>true</bool>
+       <bool>false</bool>
       </attribute>
+      <column/>
+      <column/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Position_tab">
+     <attribute name="title">
+      <string>位置数据</string>
+     </attribute>
+     <widget class="QTableWidget" name="position_table">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>771</width>
+        <height>351</height>
+       </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="textElideMode">
+       <enum>Qt::ElideMiddle</enum>
+      </property>
+      <property name="columnCount">
+       <number>4</number>
+      </property>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <column/>
+      <column/>
+      <column/>
+      <column/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Measure_tab">
+     <attribute name="title">
+      <string>测量数据</string>
+     </attribute>
+     <widget class="QTableWidget" name="measure_table">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>771</width>
+        <height>361</height>
+       </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="textElideMode">
+       <enum>Qt::ElideMiddle</enum>
+      </property>
+      <property name="columnCount">
+       <number>3</number>
+      </property>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <column/>
       <column/>
       <column/>
      </widget>
     </widget>
     <widget class="QWidget" name="Property_tab">
      <attribute name="title">
-      <string>属性配置</string>
+      <string>属性</string>
      </attribute>
      <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
@@ -316,6 +395,68 @@
              <string>串口</string>
             </property>
            </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="__position_label">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>经纬度</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QLCDNumber" name="position_x_lcdNumber">
+             <property name="digitCount">
+              <number>7</number>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLCDNumber" name="position_y_lcdNumber">
+             <property name="digitCount">
+              <number>7</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_14">
+         <item>
+          <widget class="QLabel" name="__temperature_label">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>温度</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLCDNumber" name="temperature_lcdNumber">
+           <property name="digitCount">
+            <number>10</number>
+           </property>
           </widget>
          </item>
         </layout>
@@ -493,7 +634,7 @@
      <x>0</x>
      <y>0</y>
      <width>784</width>
-     <height>28</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -505,7 +646,7 @@
   </action>
  </widget>
  <resources>
-  <include location="../resource/DTresource.qrc"/>
+  <include location="../../../PycharmProjects/diantai/resource/DTresource.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -6,7 +6,7 @@ import sys
 
 sys.path.append(os.path.abspath("../Bean"))
 sys.path.append(os.path.abspath("../UDPChat"))
-from PyQt5.QtCore import pyqtSlot, pyqtSignal, Qt, QTimer
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, Qt, QTimer,QCoreApplication
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QHeaderView, QTableWidgetItem, QAbstractItemView
 
 from AcceptVoiceReplyBean import AcceptVoiceReplyBean
@@ -102,8 +102,8 @@ class MainForm(QMainWindow, Ui_MainWindow):
             reject_voice_reply_bean.send(self.apply, addr)
 
     def closeEvent(self, QCloseEvent):
-        raise Exception
-
+    
+        QCoreApplication.instance().quit()
     def on_not_read_msg_count_signal(self):
         '''
         每次收到新的消息都会触发这个函数，此函数目的是对未读消息进行计数，默认如果用户

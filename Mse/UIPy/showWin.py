@@ -6,9 +6,8 @@ import sys
 
 sys.path.append(os.path.abspath("../Bean"))
 sys.path.append(os.path.abspath("../UDPChat"))
-from PyQt5.QtCore import pyqtSlot, pyqtSignal, Qt, QTimer
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, Qt, QTimer,QCoreApplication
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QHeaderView, QTableWidgetItem, QAbstractItemView
-
 from AcceptVoiceReplyBean import AcceptVoiceReplyBean
 from ApplyForNetBean import ApplyForNetBean
 from ApplyForVoiceBean import ApplyForVoiceBean
@@ -102,7 +101,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
             reject_voice_reply_bean.send(self.apply, addr)
 
     def closeEvent(self, QCloseEvent):
-        raise Exception
+        QCoreApplication.instance().quit()
 
     def on_not_read_msg_count_signal(self):
         '''

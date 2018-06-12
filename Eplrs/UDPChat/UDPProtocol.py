@@ -8,16 +8,12 @@ from mylogging import logger
 
 class UDPProtocol(DatagramProtocol):
 
-    def __init__(self, *, host, port, MainForm):
+    def __init__(self, *, MainForm):
         super(UDPProtocol, self).__init__()
-        self.host = host
-        self.port = port
-        # self.tools = Tools()
         self.MainForm = MainForm
-
+    
     def startProtocol(self):
-        # self.transport.connect(self.host, self.port)
-        logger.info("now we can only send to host %s port %d" % (self.host, self.port))
+        logger.info("启动udp")
 
     def datagramReceived(self, datagram, addr):
         # print(datagram)
@@ -34,7 +30,6 @@ class UDPProtocol(DatagramProtocol):
 
     def net_success_handle(self, datagram, addr):
         # 入网成功
-        # reply_for_net_success_obj = ReplyForNetSuccessBean.unpack_data(datagram)
         self.MainForm.reply_for_net_success.emit(datagram)
 
     def net_failed_handle(self, datagram, addr):
@@ -42,83 +37,11 @@ class UDPProtocol(DatagramProtocol):
         # reply_for_net_failure_obj = ReplyForNetFailureBean.unpack_data(datagram)
         self.MainForm.reply_for_net_failure.emit()
 
-    def text_received_handle(self, datagram, addr):
-        '''
-        收到消息发送成功的提示
-        :param datagram:
-        :param addr:
-        :return:
-        '''
-        self.MainForm.text_dlg.text_data_receive_signal.emit()
-
-    def image_received_handle(self, datagram, addr):
-        '''
-        告知对方成功接收图像
-        :param datagram:
-        :param addr:
-        :return:
-        '''
-        self.MainForm.text_dlg.text_data_receive_signal.emit()
-
-    def text_data_handle(self, datagram, addr):
-        # 处理发送过来的文字
-        self.MainForm.not_read_msg_count_signal.emit()
-        self.MainForm.text_dlg.text_data_signal.emit(datagram, addr)
-
-    def image_data_handle(self, datagram, addr):
-        '''
-        收到图像数据
-        :param datagram:
-        :param addr:
-        :return:
-        '''
-        self.MainForm.not_read_msg_count_signal.emit()
-        self.MainForm.text_dlg.pic_data_signal.emit(datagram, addr)
-
-    def apply_voice_handle(self,datagram,addr):
-        '''
-        收到请求通话命令,其他人发来的命令，我方在主界面进行提示，让其选择是否同意。
-        :param datagram:
-        :param addr:
-        :return:
-        '''
-        self.MainForm.apply_voice_signal.emit(datagram,addr)
-
-    def accept_voice_r_handle(self,datagram,addr):
-        '''
-        对方允许通话
-        :return:
-        '''
-        self.MainForm.voice_dlg.accept_voice_r_signal.emit(addr)
-
-    def reject_voice_r_handle(self,datagram,addr):
-        '''
-        对方拒绝通话，
-        :return:
-        '''
-        self.MainForm.voice_dlg.reject_voice_r_signal.emit()
-
-
-    def reject_voice_a_handle(self,datagram,addr):
-        self.MainForm.voice_dlg.reject_voice_a_signal.emit()
-
-    def voice_data_handle(self,datagram,addr):
-        '''
-        发送而来的语音信号，交给VoiceDialog播放
-        :param datagram:
-        :param addr:
-        :return:
-        '''
-        self.MainForm.voice_dlg.voice_data_signal.emit(datagram,addr)
-
-
-
     def connectionRefused(self):
         self.MainForm.connect_refused.emit()
 
     def send_apply(self, order, addr):
         logger.info(order)
-
         self.transport.write(order, addr)
 
 
